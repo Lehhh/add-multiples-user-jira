@@ -12,4 +12,4 @@ acesse o diretorio via powershell e execute o ultimo comando
 Para facilitar, pode se copiar os dois arquivos para a home do seu usuario e depois
 ex: Abra o PowerShell
 executar o comando :
-###java -jar AddMultiplesUserToJira-0.0.1-SNAPSHOT.jar
+java -jar AddMultiplesUserToJira-0.0.1-SNAPSHOT.jar
