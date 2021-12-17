@@ -1,3 +1,7 @@
+<h1>JIRA</h1>
+
+App para inserir usuarios em massa em diversos grupos no JIRA
+
 Para rodar a aplicação baixar o arquivo AddMultiplesUserToJira-0.0.1-SNAPSHOT.jar e o arquivo user-group.xlsx
 
 
