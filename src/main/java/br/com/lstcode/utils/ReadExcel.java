@@ -37,9 +37,9 @@ public class ReadExcel {
         FileInputStream file = new FileInputStream(new File(fileName));
         Workbook workbook = new XSSFWorkbook(file);
         Sheet sheet = workbook.getSheetAt(1);
-        credentials.setUsername(sheet.getRow(2).getCell(0).getStringCellValue());
-        credentials.setPassword(sheet.getRow(2).getCell(1).getStringCellValue());
-        credentials.setUrl(sheet.getRow(2).getCell(2).getStringCellValue());
+        credentials.setUsername(sheet.getRow(1).getCell(0).getStringCellValue());
+        credentials.setPassword(sheet.getRow(1).getCell(1).getStringCellValue());
+        credentials.setUrl(sheet.getRow(1).getCell(2).getStringCellValue());
         return credentials;
     }
 }

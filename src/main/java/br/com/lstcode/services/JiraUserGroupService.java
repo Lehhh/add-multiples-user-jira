@@ -2,7 +2,10 @@ package br.com.lstcode.services;
 
 import br.com.lstcode.model.User;
 import br.com.lstcode.model.UserGroup;
+import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpMethod;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
@@ -25,12 +28,12 @@ public class JiraUserGroupService {
 
             User user = new User(userGroup.getUser());
             try {
-                System.out.println(url + "/rest/api/3/group/user?groupname=" + userGroup.getGroup());
-                System.out.println(userGroup.getUser() + " " + userGroup.getUser() + " " + username + " " + password);
-//                restTemplate.exchange(url + "/rest/api/3/group/user?groupname=" + userGroup.getGroup(),
-//                        HttpMethod.POST,
-//                        new HttpEntity<>(user,  createHeaders(username, password)),
-//                        String.class);
+                ResponseEntity<String> response = restTemplate.exchange(url + "/rest/api/2/group/user?groupname=" + userGroup.getGroup(),
+                        HttpMethod.POST,
+                        new HttpEntity<>(user,  createHeaders(username, password)),
+                        String.class);
+                System.out.println(response.getBody());
+
             }catch (Exception e){
                 e.printStackTrace();
                 userFail.add(userGroup);
@@ -43,7 +46,7 @@ public class JiraUserGroupService {
 
         HttpHeaders headers = new HttpHeaders();
         headers.add("Content-type", "application/json");
-        headers.add("Authorization", Base64.getEncoder().encodeToString((username + ":" + password).getBytes()));
+        headers.add("Authorization", "Basic " + Base64.getEncoder().encodeToString((username + ":" + password).getBytes()));
         return headers;
     }
 }
